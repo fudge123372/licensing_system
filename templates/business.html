@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Businesses
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Register Business</h2>
+
+    <form action="/add_business" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Business Name</label>
+            <input type="text" name="business_name" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Business Type</label>
+            <input type="text" name="business_type" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" name="location" class="form-control" required>
+        </div>
+
+        <button class="btn btn-success">
+            Register Business
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

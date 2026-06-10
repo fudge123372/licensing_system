@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Applications
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header">
+            <h3>License Applications</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Business</th>
+                        <th>Application Type</th>
+                        <th>Status</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for app in applications %}
+                    <tr>
+                        <td>{{ app[0] }}</td>
+                        <td>{{ app[1] }}</td>
+                        <td>{{ app[2] }}</td>
+                        <td>{{ app[3] }}</td>
+
+                        <form action="/review" method="POST">
+                            <input type="hidden" name="application_id" value="{{ app[0] }}">
+                            <button name="action" value="approve" class="btn btn-success btn-sm">
+                                Approve
+                            </button>
+                            <button name="action" value="reject" class="btn btn-danger btn-sm">
+                                Reject
+                            </button>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My Applications
+{% endblock %}
+
+{% block content %}
+
+<h2>My Applications</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Business</th>
+            <th>Type</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for application in applications %}
+
+        <tr>
+            <td>{{ application[0] }}</td>
+            <td>{{ application[1] }}</td>
+            <td>{{ application[2] }}</td>
+            <td>{{ application[3] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

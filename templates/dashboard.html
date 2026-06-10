@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome {{ session["full_name"] }}</h2>
+<h3>My Businesses</h3>
+<ul>
+{% for business in businesses %}
+    <li>{{ business[2] }}</li>
+{% endfor %}
+</ul>
+
+<h3>My Applications</h3>
+
+<table class="table">
+<tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Status</th>
+</tr>
+
+{% for app in applications %}
+<tr>
+    <td>{{ app[0] }}</td>
+    <td>{{ app[2] }}</td>
+    <td>{{ app[3] }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
