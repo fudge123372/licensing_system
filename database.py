@@ -107,3 +107,15 @@ def approved_applications():
 def rejected_applications():
     cur.execute("SELECT COUNT(*) FROM applications WHERE status='Rejected'")
     return cur.fetchone()[0]
+
+def get_my_licenses(user_id):
+
+    sql = """ SELECT licenses.license_id, licenses.license_number, licenses.issue_date, licenses.expiry_date,businesses.business_name FROM licenses JOIN applications ON licenses.application_id = applications.application_id JOIN businesses ON applications.business_id = businesses.business_id WHERE businesses.user_id = %s"""
+    cur.execute(sql, (user_id,))
+    return cur.fetchall()
+
+def get_applications():
+
+    sql = """SELECT applications.application_id, businesses.business_name,applications.application_type,applications.status,licenses.expiry_date FROM applications JOIN businesses ON applications.business_id = businesses.business_id LEFT JOIN licenses ON applications.application_id = licenses.application_id"""
+    cur.execute(sql)
+    return cur.fetchall()

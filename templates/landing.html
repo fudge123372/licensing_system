@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Business Licensing Management System
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <img src="{{ url_for('static', filename='Licensing.webp') }}" width="150" class="mb-3">
+    <h1 class="display-4">
+        BizPermit
+    </h1>
+
+    <p class="lead mt-3">
+        A digital platform for registering businesses,
+        applying for licenses, and tracking approvals online.
+    </p>
+
+    <a href="/register" class="btn btn-success btn-lg me-2">
+        Register
+    </a>
+
+    <a href="/login" class="btn btn-primary btn-lg">
+        Login
+    </a>
+
+</div>
+
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-body">
+            <h3>About The System</h3>
+            <p>
+                This platform helps business owners register
+                businesses, apply for licenses, and track
+                application status online.
+
+                Licensing officers can review applications,
+                approve or reject requests, and issue licenses.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        System Features
+    </h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5>Business Registration</h5>
+                    <p>
+                        Register and manage businesses.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5>License Application</h5>
+                    <p>
+                        Submit license requests online.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5>Application Tracking</h5>
+                    <p>
+                        Monitor application progress.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5>Officer Review</h5>
+                    <p>
+                        Officers approve or reject applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        Why Use This System?
+    </h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5>Faster Processing</h5>
+                    <p>
+                        Reduce paperwork and manual processing.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5>Transparency</h5>
+                    <p>
+                        Track application status in real time.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5>Accessibility</h5>
+                    <p>
+                        Apply from anywhere with internet access.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="bg-dark text-white text-center mt-5 p-3">
+    Business Licensing Management System
+    <br>
+    © 2026
+</footer>
+{% endblock %}

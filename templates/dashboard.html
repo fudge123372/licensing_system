@@ -1,28 +1,125 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h2>Welcome {{ session["full_name"] }}</h2>
-<h3>My Businesses</h3>
-<ul>
-{% for business in businesses %}
-    <li>{{ business[2] }}</li>
-{% endfor %}
-</ul>
 
-<h3>My Applications</h3>
+<div class="container mt-4">
+    
+    <div class="card bg-primary text-white shadow mb-4">
+        <div class="card-body">
+            <h2>Welcome {{ session["full_name"] }}</h2>
+            <p>
+                Manage your businesses, applications and licenses.
+            </p>
+        </div>
+    </div>
+    
+    <div class="mb-4">
+        <a href="/business" class="btn btn-primary">
+            Add Business
+        </a>
+        <a href="/apply" class="btn btn-success">
+            Apply License
+        </a>
+        <a href="/licenses" class="btn btn-warning">
+            View Licenses
+        </a>
+    </div>
 
-<table class="table">
-<tr>
-    <th>ID</th>
-    <th>Type</th>
-    <th>Status</th>
-</tr>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Businesses</h5>
+                    <h2>{{ businesses|length }}</h2>
+                </div>
+            </div>
+        </div>
 
-{% for app in applications %}
-<tr>
-    <td>{{ app[0] }}</td>
-    <td>{{ app[2] }}</td>
-    <td>{{ app[3] }}</td>
-</tr>
-{% endfor %}
-</table>
+        <div class="col-md-4">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Applications</h5>
+                    <h2>{{ applications|length }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Licenses</h5>
+                    <h2>{{ licenses|length }}</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Businesses -->
+
+    <h3>My Businesses</h3>
+
+    <div class="row">
+
+        {% for business in businesses %}
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h5>{{ business[2] }}</h5>
+
+                    <p>
+                        <strong>Type:</strong>
+                        {{ business[3] }}
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        {{ business[4] }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <h3 class="mt-4">My Applications</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Status</th>
+        </tr>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app[0] }}</td>
+            <td>{{ app[2] }}</td>
+            <td>
+                {% if app[3] == "Approved" %}
+                <span class="badge bg-success">
+                    Approved
+                </span>
+                {% elif app[3] == "Rejected" %}
+                <span class="badge bg-danger">
+                    Rejected
+                </span>
+                {% else %}
+                <span class="badge bg-warning text-dark">
+                    Pending
+                </span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
 {% endblock %}

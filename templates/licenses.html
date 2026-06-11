@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+My license
+{% endblock %}
+
+{% block content %}
+
+<h2>license</h2>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+            <th>License No.</th>
+            <th>Business</th>
+            <th>Issue Date</th>
+            <th>Expiry Date</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for license in licenses %}
+
+        <tr>
+
+            <td>{{ license[1] }}</td>
+
+            <td>{{ license[4] }}</td>
+
+            <td>{{ license[2] }}</td>
+
+            <td>{{ license[3] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

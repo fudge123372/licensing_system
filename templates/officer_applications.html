@@ -12,36 +12,69 @@ Applications
             <h3>License Applications</h3>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-striped">
+
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
                         <th>Business</th>
                         <th>Application Type</th>
                         <th>Status</th>
-                        <th>action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {% for app in applications %}
-                    <tr>
-                        <td>{{ app[0] }}</td>
-                        <td>{{ app[1] }}</td>
-                        <td>{{ app[2] }}</td>
-                        <td>{{ app[3] }}</td>
 
-                        <form action="/review" method="POST">
-                            <input type="hidden" name="application_id" value="{{ app[0] }}">
-                            <button name="action" value="approve" class="btn btn-success btn-sm">
-                                Approve
-                            </button>
-                            <button name="action" value="reject" class="btn btn-danger btn-sm">
-                                Reject
-                            </button>
-                        </form>
+                <tbody>
+
+                    {% for application in applications %}
+
+                    <tr>
+
+                        <td>{{ application[0] }}</td>
+                        <td>{{ application[1] }}</td>
+                        <td>{{ application[2] }}</td>
+                        <td>{{ application[3] }}</td>
+
+                        <td>
+
+                            {% if application[3] == "Pending" %}
+
+                            <form action="/review" method="POST" style="display:inline;">
+
+                                <input type="hidden" name="application_id" value="{{ application[0] }}">
+
+                                <button type="submit" name="action" value="approve" class="btn btn-success btn-sm">
+                                    Approve
+                                </button>
+
+                            </form>
+
+                            <form action="/review" method="POST" style="display:inline;">
+
+                                <input type="hidden" name="application_id" value="{{ application[0] }}">
+
+                                <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">
+                                    Reject
+                                </button>
+
+                            </form>
+
+                            {% else %}
+
+                            <span class="text-muted">
+                                Reviewed
+                            </span>
+                            {% endif %}
+                        </td>
                     </tr>
+
                     {% endfor %}
+                    <th>Expiry Date</th>
+                    <td>
+                        {{ application[4] if application[4] else "-" }}
+                    </td>
                 </tbody>
+
             </table>
         </div>
     </div>

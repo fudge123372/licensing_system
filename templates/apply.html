@@ -21,7 +21,16 @@ Apply for License
                             <label class="form-label">
                                 Business ID
                             </label>
-                            <input type="number" name="business_id" class="form-control" required>
+                            <select name="business_id" class="form-select" required>
+                                <option value="">
+                                    Select Business
+                                </option> 
+                                {% for business in businesses %}
+                                <option value="{{ business[0] }}">
+                                    {{ business[2] }}
+                                </option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <div class="mb-3">
