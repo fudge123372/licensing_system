@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container mt-4">
-    
+
     <div class="card bg-primary text-white shadow mb-4">
         <div class="card-body">
             <h2>Welcome {{ session["full_name"] }}</h2>
@@ -12,7 +12,7 @@
             </p>
         </div>
     </div>
-    
+
     <div class="mb-4">
         <a href="/business" class="btn btn-primary">
             Add Business
@@ -92,7 +92,7 @@
     </div>
 
     <h3 class="mt-4">My Applications</h3>
-    <table class="table table-bordered">
+    <table id="applicationsTable" class="table table-bordered">
         <tr>
             <th>ID</th>
             <th>Type</th>
@@ -121,5 +121,13 @@
         {% endfor %}
     </table>
 </div>
+<script>
 
+    $(document).ready(function () {
+
+        $('#applicationsTable').DataTable();
+
+    });
+
+</script>
 {% endblock %}

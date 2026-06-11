@@ -8,7 +8,7 @@ My license
 
 <h2>license</h2>
 
-<table class="table">
+<table id="licensetable" class="table table-bordered">
 
     <thead>
 
@@ -42,5 +42,9 @@ My license
     </tbody>
 
 </table>
-
+<script>
+$(document).ready(function () {
+    $('#licenseTable').DataTable();
+});
+</script>
 {% endblock %}
